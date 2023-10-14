@@ -86,9 +86,10 @@ if __name__ == "__main__":
                         # Accumulate information for the summary
                         summary.append(f"Deleted folder: {obj_key} - Error: {str(e)}")
 
-    # Send a Gotify notification with the summary
-    gotify.create_message(
-        title="Backup Summary",
-        message="\n".join(summary),
-        extras={"format": "text/plain"},
-    )
+    if config['enable_gotify']:
+        # Send a Gotify notification with the summary
+        gotify.create_message(
+            title="Backup Summary",
+            message="\n".join(summary),
+            extras={"format": "text/plain"},
+        )

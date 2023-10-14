@@ -8,6 +8,7 @@ s3:
   access_key: <YOUR_ACCESS_KEY>
   secret_key: <YOUR_SECRET_KEY>
 
+enable_gotify: True
 gotify:
   api_url: <YOUR_GOTIFY_SERVER>
   api_token: <YOUR_GOTIFY_APP_TOKE>
