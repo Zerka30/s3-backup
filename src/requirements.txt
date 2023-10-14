@@ -1,0 +1,5 @@
+boto3
+gitignore_parser
+gotify
+logging
+datetime
