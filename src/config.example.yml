@@ -1,0 +1,13 @@
+backup_folders:
+  - path: <PATH_TO_BACKUP>
+    service_name: <FOLDER_NAME>
+
+s3:
+  endpoint_url: https://s3.pub1.infomaniak.cloud
+  bucket_name: <YOUR_ BACKUP_NAME>
+  access_key: <YOUR_ACCESS_KEY>
+  secret_key: <YOUR_SECRET_KEY>
+
+gotify:
+  api_url: <YOUR_GOTIFY_SERVER>
+  api_token: <YOUR_GOTIFY_APP_TOKE>
