@@ -21,7 +21,6 @@ if __name__ == "__main__":
     # Changez le répertoire de travail actuel vers le répertoire du script
     os.chdir(script_dir)
 
-    
     # Load configuration from the config.yml file
     with open("./config.yml", "r") as config_file:
         config = yaml.load(config_file, Loader=yaml.FullLoader)
@@ -54,24 +53,28 @@ if __name__ == "__main__":
 
         try:
             # Save the folder
-            if config['unique_file']:
+            if config["unique_file"]:
                 bucket.upload_folder_has_archive(
                     source_path, service_name, current_datetime, bakignore_rules
                 )
-            else:            
+            else:
                 bucket.upload_folder(
                     source_path, service_name, current_datetime, bakignore_rules
                 )
             logging.info(f"Backup for service {service_name} completed successfully.")
 
             # Accumulate information for the summary
-            summary.append(f"Service: {service_name} - Backup completed successfully")
+            summary.append(
+                f"Service: {service_name} \nStatus: Backup completed successfully ✅\n\n"
+            )
         except Exception as e:
             # Log an error if there is an issue with the backup
             logging.error(f"Error while backing up service {service_name}: {str(e)}")
 
             # Accumulate error information for the summary
-            summary.append(f"Service: {service_name} - Error: {str(e)}")
+            summary.append(
+                f"Service: {service_name} \nStatus: Backup completed with errors ❌\n​Error Details: {str(e)}\n\n"
+            )
 
     # Delete folders older than 3 months
     for folder_info in config["backup_folders"]:
@@ -99,7 +102,7 @@ if __name__ == "__main__":
                         # Accumulate information for the summary
                         summary.append(f"Deleted folder: {obj_key} - Error: {str(e)}")
 
-    if config['enable_gotify']:
+    if config["enable_gotify"]:
         # Send a Gotify notification with the summary
         gotify.create_message(
             title="Backup Summary",
