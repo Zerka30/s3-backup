@@ -4,6 +4,7 @@ import logging
 import shutil
 import tarfile
 
+
 class S3Bucket:
     def __init__(self, endpoint_url, bucket_name, access_key, secret_key):
         self.endpoint_url = endpoint_url
@@ -57,7 +58,7 @@ class S3Bucket:
                         logging.error(f"Error while backing up {s3_key}: {str(e)}")
                 else:
                     logging.info(f"Backup: {s3_key} - File ignored")
-                    
+
     def upload_folder_has_archive(
         self, source_path, service_name, current_datetime, bakignore_rules
     ):
@@ -71,7 +72,6 @@ class S3Bucket:
         temp_dir = f"/tmp/{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}"
         os.makedirs(temp_dir)
 
-        Ajout d'une option one_file, pour utiliser des archives .tar.gz
         try:
             # Compress the source folder
             archive_name = os.path.join(temp_dir, "backup.tar.gz")
@@ -84,8 +84,13 @@ class S3Bucket:
                             archive.add(source_file, arcname=rel_source_file)
 
             # Upload the compressed archive to S3
-            s3_key = os.path.join(backup_folder_name, f"{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}.tar.gz")
-            self.s3_client.upload_file(archive_name, self.bucket_name, s3_key, ExtraArgs={"ACL": "private"})
+            s3_key = os.path.join(
+                backup_folder_name,
+                f"{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}.tar.gz",
+            )
+            self.s3_client.upload_file(
+                archive_name, self.bucket_name, s3_key, ExtraArgs={"ACL": "private"}
+            )
 
             logging.info(f"Backup Archive: {s3_key} - Success")
         except Exception as e:
