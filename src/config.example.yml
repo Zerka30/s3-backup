@@ -1,3 +1,5 @@
+unique_file: True # If true, the script create an archive of the folder
+
 backup_folders:
   - path: <PATH_TO_BACKUP>
     service_name: <FOLDER_NAME>

@@ -1,0 +1,22 @@
+2023-10-31 13:52:48,795 - INFO - Starting backup for service: bitwarden
+2023-10-31 13:52:49,526 - INFO - Backup Archive: bitwarden/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:52:49,527 - INFO - Backup for service bitwarden completed successfully.
+2023-10-31 13:52:49,527 - INFO - Starting backup for service: site_web
+2023-10-31 13:52:49,935 - INFO - Backup Archive: site_web/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:52:49,936 - INFO - Backup for service site_web completed successfully.
+2023-10-31 13:52:49,936 - INFO - Starting backup for service: database
+2023-10-31 13:52:50,158 - INFO - Backup Archive: database/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:52:50,158 - INFO - Backup for service database completed successfully.
+2023-10-31 13:52:50,159 - INFO - Starting backup for service: gotify
+2023-10-31 13:52:50,235 - INFO - Backup Archive: gotify/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:52:50,235 - INFO - Backup for service gotify completed successfully.
+2023-10-31 13:52:50,235 - INFO - Starting backup for service: minecraft
+2023-10-31 13:52:58,164 - INFO - Backup Archive: minecraft/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:52:58,179 - INFO - Backup for service minecraft completed successfully.
+2023-10-31 13:52:58,179 - INFO - Starting backup for service: registry
+2023-10-31 13:53:15,851 - INFO - Backup Archive: registry/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:53:15,906 - INFO - Backup for service registry completed successfully.
+2023-10-31 13:53:15,906 - INFO - Starting backup for service: wiki
+2023-10-31 13:53:16,003 - INFO - Backup Archive: wiki/2023-10-31_13-52-48.tar.gz - Success
+2023-10-31 13:53:16,003 - INFO - Backup for service wiki completed successfully.
+2023-10-31 13:53:16,275 - INFO - HTTP Request: POST https://gotify.zerka.dev/message "HTTP/1.1 200 OK"

@@ -3,3 +3,5 @@ gitignore_parser
 gotify
 logging
 datetime
+shutil
+tarfile

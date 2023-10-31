@@ -1,5 +1,6 @@
 import yaml
 import logging
+import os
 from datetime import datetime, timedelta
 from gotify import Gotify
 from gitignore_parser import parse_gitignore
@@ -14,6 +15,13 @@ logging.basicConfig(
 )
 
 if __name__ == "__main__":
+    # Obtenez le répertoire du script en cours d'exécution
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Changez le répertoire de travail actuel vers le répertoire du script
+    os.chdir(script_dir)
+
+    
     # Load configuration from the config.yml file
     with open("./config.yml", "r") as config_file:
         config = yaml.load(config_file, Loader=yaml.FullLoader)
@@ -46,9 +54,14 @@ if __name__ == "__main__":
 
         try:
             # Save the folder
-            bucket.upload_folder(
-                source_path, service_name, current_datetime, bakignore_rules
-            )
+            if config['unique_file']:
+                bucket.upload_folder_has_archive(
+                    source_path, service_name, current_datetime, bakignore_rules
+                )
+            else:            
+                bucket.upload_folder(
+                    source_path, service_name, current_datetime, bakignore_rules
+                )
             logging.info(f"Backup for service {service_name} completed successfully.")
 
             # Accumulate information for the summary
